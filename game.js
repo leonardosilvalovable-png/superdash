@@ -242,7 +242,6 @@ class SuperDash {
     document.getElementById('card-level-progress-fill').style.width = `${record}%`;
   }
 
-  // GAME PLAYPLAY SETUP
   startLevel() {
     // Force blur active buttons and focus window to allow spacebar to jump
     if (document.activeElement && document.activeElement.blur) {
@@ -665,18 +664,17 @@ class SuperDash {
       this.player.vy += this.physics.gravity * dt;
       if (this.player.vy > this.physics.maxFallSpeed) this.player.vy = this.physics.maxFallSpeed;
       
-      this.player.y += this.player.vy * dt;
-      this.player.isGrounded = false;
-
       // Tap to Jump
       if (this.isActionPressed && this.player.isGrounded) {
         this.player.vy = this.physics.jumpForce;
-        this.player.isGrounded = false;
         window.audioSynth.playJump();
         
         // Spawn jump blast particles
         this.createJumpParticles();
       }
+
+      this.player.y += this.player.vy * dt;
+      this.player.isGrounded = false;
 
       // Smooth cube rotation animation in mid-air
       if (!this.player.isGrounded) {
@@ -1544,7 +1542,7 @@ class SuperDash {
 
     if (isGhost) return;
 
-    // Draw little cube passenger sitting inside ship cockpit
+    // Draw little cube passenger passenger passenger
     ctx.save();
     ctx.translate(x + w * 0.35, y + h * 0.4);
     ctx.scale(0.5, 0.5); // Smaller passenger cube
