@@ -183,6 +183,8 @@ class SuperDash {
       });
     } 
     else if (newState === this.states.PLAYING) {
+      this.startLevel();
+      
       document.getElementById('hud-overlay').classList.add('active');
       document.getElementById('hud-level-name').innerText = this.currentLevel.name;
       
@@ -198,8 +200,6 @@ class SuperDash {
         practiceBadge.classList.remove('active');
         checkpointsHud.classList.remove('active');
       }
-
-      this.startLevel();
     } 
     else if (newState === this.states.GAMEOVER) {
       document.getElementById('game-over-screen').classList.add('active');
