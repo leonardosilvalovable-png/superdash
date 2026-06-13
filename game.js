@@ -244,6 +244,12 @@ class SuperDash {
 
   // GAME PLAYPLAY SETUP
   startLevel() {
+    // Force blur active buttons and focus window to allow spacebar to jump
+    if (document.activeElement && document.activeElement.blur) {
+      document.activeElement.blur();
+    }
+    window.focus();
+
     this.currentLevel = window.LEVELS[this.currentLevelIndex];
     this.player.x = 100;
     this.player.y = this.physics.floorY - this.player.height;
